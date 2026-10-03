@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }} | Tienda Demo{% endblock %}
+
+{% block content %}
+
+<section class="container section">
+<div class="product-detail">
+
+    <div class="product-detail-image">
+        <img
+            src="{{ url_for('static', filename='images/' + product.image) }}"
+            alt="{{ product.name }}"
+        >
+    </div>
+
+
+    <div class="product-detail-info">
+
+        {% if product.badge %}
+            <span class="product-badge">
+                {{ product.badge }}
+            </span>
+        {% endif %}
+
+        <p class="category">
+            {{ product.category }}
+        </p>
+
+        <h1>{{ product.name }}</h1>
+
+        <p class="rating">
+            ★ {{ product.rating }}
+            <span>({{ product.reviews }} reseñas)</span>
+        </p>
+
+        <p class="price large">
+            ${{ "%.2f"|format(product.price) }}
+        </p>
+
+        <p class="description">
+            {{ product.description }}
+        </p>
+
+        <button
+            class="button add-to-cart"
+            data-product-id="{{ product.id }}"
+        >
+            Añadir al carrito
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+{% endblock %}

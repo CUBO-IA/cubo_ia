@@ -1,0 +1,101 @@
+<!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Cuboia Tienda{% endblock %}</title>
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}"
+>
+
+</head> <body>
+<header class="site-header">
+
+    <div class="header-container">
+
+        <a href="{{ url_for('home') }}" class="logo">
+            Cuboia
+        </a>
+
+        <form
+            action="{{ url_for('products') }}"
+            method="get"
+            class="search-form"
+        >
+
+            <input
+                type="search"
+                name="search"
+                placeholder="Buscar productos..."
+                value="{{ request.args.get('search', '') }}"
+                aria-label="Buscar productos"
+            >
+
+            <button type="submit" aria-label="Buscar">
+                🔍
+            </button>
+
+        </form>
+
+        <a href="{{ url_for('cart') }}" class="cart-link">
+            🛒 Carrito
+        </a>
+
+    </div>
+
+
+    <nav class="main-nav">
+
+        <div class="nav-container">
+
+            <a href="{{ url_for('home') }}">
+                Inicio
+            </a>
+
+            <a href="{{ url_for('products') }}">
+                Todos
+            </a>
+
+            <a href="{{ url_for('products', category='Tecnología') }}">
+                Tecnología
+            </a>
+
+            <a href="{{ url_for('products', category='Accesorios') }}">
+                Accesorios
+            </a>
+
+            <a href="{{ url_for('products', category='Hogar') }}">
+                Hogar
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+        <p>
+            © 2026 Cuboia — Proyecto educativo de tienda ficticia.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script
+    src="{{ url_for('static', filename='js/app.js') }}"
+></script>
+
+</body> </html>

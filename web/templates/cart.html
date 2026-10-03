@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Carrito | Tienda Demo{% endblock %}
+
+{% block content %}
+
+<section class="container section">
+<h1>Tu carrito</h1>
+
+<div id="cart-container" class="cart-container">
+
+    <div class="empty-state">
+        <h2>Tu carrito está vacío</h2>
+        <p>Aquí aparecerán los productos que añadas.</p>
+
+        <a href="{{ url_for('products') }}" class="button">
+            Explorar productos
+        </a>
+    </div>
+
+</div>
+
+</section>
+
+{% endblock %}

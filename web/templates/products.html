@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Productos | Tienda Demo{% endblock %}
+
+{% block content %}
+
+<section class="container section">
+<div class="section-header">
+
+    <div>
+        {% if search %}
+            <h1>Resultados para "{{ search }}"</h1>
+        {% elif category %}
+            <h1>{{ category }}</h1>
+        {% else %}
+            <h1>Todos los productos</h1>
+        {% endif %}
+
+        <p>{{ products|length }} producto(s)</p>
+    </div>
+
+</div>
+
+
+{% if products %}
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <article class="product-card">
+
+            <a href="{{ url_for('product', product_id=product.id) }}">
+
+                <div class="product-image">
+                    <img
+                        src="{{ url_for('static', filename='images/' + product.image) }}"
+                        alt="{{ product.name }}"
+                    >
+                </div>
+
+            </a>
+
+            {% if product.badge %}
+                <span class="product-badge">
+                    {{ product.badge }}
+                </span>
+            {% endif %}
+
+            <div class="product-info">
+
+                <h3>
+                    <a href="{{ url_for('product', product_id=product.id) }}">
+                        {{ product.name }}
+                    </a>
+                </h3>
+
+                <p class="rating">
+                    ★ {{ product.rating }}
+                    <span>({{ product.reviews }})</span>
+                </p>
+
+                <p class="price">
+                    ${{ "%.2f"|format(product.price) }}
+                </p>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+{% else %}
+
+    <div class="empty-state">
+        <h2>No encontramos productos</h2>
+        <p>Prueba con otra búsqueda o categoría.</p>
+        <a href="{{ url_for('products') }}" class="button">
+            Ver todos los productos
+        </a>
+    </div>
+
+{% endif %}
+
+</section>
+
+{% endblock %}

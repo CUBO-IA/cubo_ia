@@ -1,0 +1,46 @@
+[
+{
+"id": 1,
+"name": "Auriculares inalámbricos",
+"category": "Tecnología",
+"price": 49.99,
+"image": "products/headphones.jpg",
+"description": "Auriculares inalámbricos con diseño moderno y batería de larga duración.",
+"rating": 4.5,
+"reviews": 128,
+"badge": "Oferta"
+},
+{
+"id": 2,
+"name": "Teclado mecánico",
+"category": "Tecnología",
+"price": 69.99,
+"image": "products/keyboard.jpg",
+"description": "Teclado mecánico compacto para trabajo y entretenimiento.",
+"rating": 4.7,
+"reviews": 94,
+"badge": "Popular"
+},
+{
+"id": 3,
+"name": "Mochila urbana",
+"category": "Accesorios",
+"price": 39.99,
+"image": "products/backpack.jpg",
+"description": "Mochila resistente con múltiples compartimentos.",
+"rating": 4.4,
+"reviews": 76,
+"badge": ""
+},
+{
+"id": 4,
+"name": "Lámpara de escritorio",
+"category": "Hogar",
+"price": 29.99,
+"image": "products/lamp.jpg",
+"description": "Lámpara LED de escritorio con diseño minimalista.",
+"rating": 4.6,
+"reviews": 52,
+"badge": "Nuevo"
+}
+]

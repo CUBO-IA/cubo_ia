@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio | Cuboia{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+<div class="hero-content">
+
+    <h1>
+        Todo lo que buscas,
+        en un solo lugar.
+    </h1>
+
+    <p>
+        Explora nuestra selección de productos
+        y descubre nuevas opciones para tu día a día.
+    </p>
+
+    <a href="{{ url_for('products') }}" class="button">
+        Explorar productos
+    </a>
+
+</div>
+
+</section> <section class="container section">
+<div class="section-header">
+
+    <h2>
+        Explora por categoría
+    </h2>
+
+</div>
+
+
+<div class="category-grid">
+
+    <a
+        href="{{ url_for('products', category='Tecnología') }}"
+        class="category-card"
+    >
+        <h3>Tecnología</h3>
+        <p>Dispositivos y accesorios tecnológicos.</p>
+    </a>
+
+
+    <a
+        href="{{ url_for('products', category='Accesorios') }}"
+        class="category-card"
+    >
+        <h3>Accesorios</h3>
+        <p>Productos prácticos para todos los días.</p>
+    </a>
+
+
+    <a
+        href="{{ url_for('products', category='Hogar') }}"
+        class="category-card"
+    >
+        <h3>Hogar</h3>
+        <p>Artículos para mejorar tus espacios.</p>
+    </a>
+
+</div>
+
+</section> <section class="container section">
+<div class="section-header">
+
+    <h2>
+        Productos destacados
+    </h2>
+
+    <a href="{{ url_for('products') }}">
+        Ver todos →
+    </a>
+
+</div>
+
+
+<div class="product-grid">
+
+    {% for product in products %}
+
+    <article class="product-card">
+
+        <a href="{{ url_for('product', product_id=product.id) }}">
+
+            <div class="product-image">
+
+                <img
+                    src="{{ url_for('static', filename='images/' + product.image) }}"
+                    alt="{{ product.name }}"
+                >
+
+            </div>
+
+        </a>
+
+
+        {% if product.badge %}
+
+        <span class="product-badge">
+            {{ product.badge }}
+        </span>
+
+        {% endif %}
+
+
+        <div class="product-info">
+
+            <h3>
+
+                <a
+                    href="{{ url_for('product', product_id=product.id) }}"
+                >
+                    {{ product.name }}
+                </a>
+
+            </h3>
+
+
+            <p class="rating">
+
+                ★ {{ product.rating }}
+
+                <span>
+                    ({{ product.reviews }})
+                </span>
+
+            </p>
+
+
+            <p class="price">
+
+                ${{ "%.2f"|format(product.price) }}
+
+            </p>
+
+        </div>
+
+    </article>
+
+    {% endfor %}
+
+</div>
+
+</section>
+
+{% endblock %}
